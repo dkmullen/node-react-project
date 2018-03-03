@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
 });
 
 // Heroku will dynamically provides port as enn var
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT); // caps warns that this shouldn't be changed lightly!
 
 // req res = js object of the incoming req and outgoing res
