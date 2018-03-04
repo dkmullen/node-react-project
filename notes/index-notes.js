@@ -67,4 +67,16 @@ app.listen(PORT);
     clientSecret - fakeSecret
 
     module.exports is a node thing that makes an object that can be imported in other modules
+
+    Thoughts on Google Oauth - When someone signs in with email and pw, we track both
+    and expect that each time, they provide the same creds. But when they sign in thru
+    Google, the unique identifer is their Google profile id. So Google takes
+    responsibility for auth, and we just get that id every time.
+
+    Mongo is schema-lass(?) meaning each record can have different fields (name, age, etc)
+    The defining characteristic of structured DB is that every record has the same
+    fields, even if they are empty. HOWEVER, Mongoose DOES want a schema!
+
+    Mongoose Class = Mongo Collection, and Mongoose
+    instances of class = Mongo records
 */
