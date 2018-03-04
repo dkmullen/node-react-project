@@ -1,6 +1,27 @@
-const express = require('express');
+const express = require('express'),
+  passport = require('passport'),
+  GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+const keys = require('./config/keys');
 
 const app = express();
+
+// Tells passport, which knows some general things about auth, to use this
+// new instance of GoogleStrategy, which knows the specifics of Google auth
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      // Where users coming from the Google auth process are directed
+      // Could name this anything...
+      callbackURL: '/auth/google/callback'
+    },
+    accessToken => {
+      console.log(accessToken);
+    }
+  )
+);
 
 // A route handler for the GET req
 app.get('/', (req, res) => {
@@ -29,4 +50,21 @@ app.listen(PORT);
     * Specify Start Script - ... and specify start script there too (point to this file)
     * Create .gitignore - containing at least this: node_modules
     heroku create - yields app html and git repository to push to
+
+    What is express? A library that runs in the node runtime; has helpers to
+    make dealing with HTTP traffic easier
+
+    What is PassportJS? General helpers for handling auth in Express.
+
+    However, we also use at least one Passport Strategy, a package containing very specific
+    helpers for handling auth with a specific provider (Google, FB, etc)
+
+    Getting these from Google: First, you have to use the Google+ API, which isn't
+    obvious on the site! To get these, I entered http://localhost:5000 and
+    http://localhost:5000/* as the sending and recieving addresses.
+
+    clientID - fakeID.apps.googleusercontent.com
+    clientSecret - fakeSecret
+
+    module.exports is a node thing that makes an object that can be imported in other modules
 */
