@@ -12,4 +12,16 @@ module.exports = app => {
   );
 
   app.get('/auth/google/callback', passport.authenticate('google', {}));
+
+  app.get('/api/logout', (req, res) => {
+    // A passport func that kills the cookie!
+    req.logout();
+    res.send('bye');
+  });
+
+  // This address can be anything
+  app.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+    console.log('aaa');
+  });
 };

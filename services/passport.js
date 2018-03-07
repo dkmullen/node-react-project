@@ -6,12 +6,12 @@ const keys = require('../config/keys');
 
 passport.serializeUser((user, done) => {
   // the id below is the mongo user id
-  done(err, user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
-    done(err, user);
+    done(null, user);
   });
 });
 
@@ -27,11 +27,11 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
-          done(err, existingUser);
+          done(null, existingUser);
         } else {
           new User({ googleId: profile.id })
             .save()
-            .then(user => done(err, user));
+            .then(user => done(null, user));
         }
       });
     }
