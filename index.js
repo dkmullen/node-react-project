@@ -27,3 +27,9 @@ require('./routes/authRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
+
+/*
+.use introduces middleware; mware preprocesses a req before sending it to route handler
+cookieSession extracts cookie data
+passport pulls id out of cookie data
+*/

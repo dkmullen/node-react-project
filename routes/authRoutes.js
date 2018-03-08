@@ -22,6 +22,5 @@ module.exports = app => {
   // This address can be anything
   app.get('/api/current_user', (req, res) => {
     res.send(req.user);
-    console.log('aaa');
   });
 };

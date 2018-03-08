@@ -47,12 +47,18 @@ app.listen(PORT);
     Deployment checklist:
     * Dynamic Port Binding (const.PORT = process.env.PORT || 5000)
     * Specify Node/NPM - For Heroku, specify node and npm ver in package.json
-    * Specify Start Script - ... and specify start script there too (point to this file)
+    * Specify Start Script - ... in package.json (point to this file)
     * Create .gitignore - containing at least this: node_modules
     heroku create - yields app html and git repository to push to
 
     What is express? A library that runs in the node runtime; has helpers to
     make dealing with HTTP traffic easier
+
+    Grider says that if you understand middleware (which tweaks data before sending
+    it to the various routes) and you understand routes, you understand the
+    biggest part of what Express does.
+
+    app.use is the way to introduce middleware
 
     What is PassportJS? General helpers for handling auth in Express.
 
