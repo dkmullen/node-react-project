@@ -108,4 +108,16 @@ app.listen(PORT);
     }
 
     Then start both from server dir with npm run dev
+
+    To fix routning within the app, add this to package.json in client:
+
+    "proxy": {
+      "/auth/google": {
+        "target": "http://localhost:5000"
+      }
+    }
+    And add http://localhost:3000/auth/google/callback to Google APIs Dev redirects
+    Then you can add relative links in the app and have them redirected
+    And get this: In the production build, the client side server doesn't exist, and
+    so this whole thing isn't an isue.
 */
