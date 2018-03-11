@@ -85,4 +85,27 @@ app.listen(PORT);
 
     Mongoose Class = Mongo Collection, and Mongoose
     instances of class = Mongo records
+
+    Don't use crazy characters in a mLab DB user pw!!!
+
+    ------------------
+    Setting up React app
+    sudo npm i -g create-react-app
+
+    Then, in the project dir:
+    create-react-app client
+
+    After this runs, there is a folder called 'client' for React w/c has its own
+    server. Can be started with npm start (from within 'client')
+
+    Then install concurrently (with npm) to auto-start both servers, and do this
+    in package.json
+    "scripts": {
+      "start": "node index.js",
+      "server": "nodemon index.js",
+      "client": "npm run start --prefix client",
+      "dev": "concurrently \"npm run server\" \"npm run client\""
+    }
+
+    Then start both from server dir with npm run dev
 */
